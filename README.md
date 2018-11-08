@@ -2,7 +2,7 @@
 
 Requirements: Python 3.6+, Sklearn, Nltk
 
-You can call the classifier script with an excerpt as argument:
+You can run the classifier script with an excerpt as argument:
 
 ```bash
 $ python chitchat_classifier.py "Let's have lunch and catch up next week"
