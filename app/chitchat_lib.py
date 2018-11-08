@@ -3,7 +3,7 @@ from sklearn.externals import joblib
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from re import sub
 
-def tokenize(excerpt):
+def preprocess(excerpt):
     """ Returns a cleaned up excerpt without stopwords
     """
     excerpt = sub('[^a-zA-Z]', ' ', excerpt)
@@ -19,4 +19,4 @@ def document_term_matrix(excerpt):
     """
     tfidf = joblib.load('model/tfidf.vectorizer')
     vec = CountVectorizer(vocabulary=tfidf.vocabulary_)
-    return vec.transform([tokenize(excerpt)]).toarray()
+    return vec.transform([preprocess(excerpt)]).toarray()
