@@ -2,6 +2,10 @@
 
 Requirements: Python 3.6+, Sklearn, Nltk
 
+```bash
+$ pip install -r requirements.txt
+```
+
 You can run the classifier script with an excerpt as argument:
 
 ```bash
