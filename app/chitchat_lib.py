@@ -1,6 +1,6 @@
 from nltk.corpus import stopwords
 from sklearn.externals import joblib
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.feature_extraction.text import CountVectorizer
 from re import sub
 
 def preprocess(excerpt):
