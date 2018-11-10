@@ -1,6 +1,6 @@
 # Chit-chat Classifier
 
-Requirements: Python 3.6+, Sklearn, Nltk
+Requirements: Python 3.6+, Scikit-learn
 
 ```bash
 $ pip install -r requirements.txt
