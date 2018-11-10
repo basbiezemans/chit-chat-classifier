@@ -1,6 +1,4 @@
-from nltk.corpus import stopwords
 from sklearn.externals import joblib
-from sklearn.feature_extraction.text import CountVectorizer
 from re import sub
 
 def preprocess(excerpt):
@@ -9,7 +7,6 @@ def preprocess(excerpt):
     excerpt = sub('[^a-zA-Z]', ' ', excerpt)
     excerpt = excerpt.lower()
     excerpt = excerpt.split()
-    excerpt = [word for word in excerpt if not word in set(stopwords.words('english'))]
     excerpt = ' '.join(excerpt)
     return excerpt
 
@@ -17,6 +14,5 @@ def preprocess(excerpt):
 def document_term_matrix(excerpt):
     """ Creates and returns a document-term matrix
     """
-    tfidf = joblib.load('model/tfidf.vectorizer')
-    vec = CountVectorizer(vocabulary=tfidf.vocabulary_)
+    vec = joblib.load('model/tfidf.vectorizer')
     return vec.transform([preprocess(excerpt)]).toarray()
