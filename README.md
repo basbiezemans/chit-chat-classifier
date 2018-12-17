@@ -2,14 +2,28 @@
 
 Requirements: Python 3.6+, Scikit-learn
 
+Navigate to the `app` directory and install dependencies:
+
 ```bash
 $ pip install -r requirements.txt
 ```
 
-You can run the classifier script with an excerpt as argument:
+Run the application:
 
 ```bash
-$ python chitchat_classifier.py "Let's have lunch and catch up next week"
+$ python main.py
+```
+
+In your web browser, enter the following address:
+
+```
+http://localhost:8080
+```
+
+POST-request example using [cURL](https://curl.haxx.se/):
+
+```bash
+$ curl http://localhost:8080/classify -d "data=Let's have lunch and catch up next week"
 ```
 
 Output:
@@ -19,8 +33,9 @@ Output:
     "text": "Let's have lunch and catch up next week", 
     "classification": {
         "class_name": "Chit-chat", 
-        "probability": 0.6174352739594865
+        "probability": 0.8134498791362933
     }
 }
 ```
 
+In your terminal window, press **Ctrl+C** to exit the web server.

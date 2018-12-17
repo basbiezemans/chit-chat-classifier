@@ -1,15 +1,13 @@
-from sklearn.externals import joblib
 from chitchat_lib import document_term_matrix
-from sys import argv
-import json
 
 class ChitChatClassifier:
-    def __init__(self):
-        self.model = joblib.load('model/chitchat.model')
+    def __init__(self, model, vectorizer):
+        self.model = model
+        self.vec = vectorizer
         self.labels = ('Not chit-chat', 'Chit-chat')
 
     def predict(self, excerpt):
-        x = document_term_matrix(excerpt)
+        x = document_term_matrix(self.vec, excerpt)
         p = self.model.predict_proba(x)[0]
         d = dict(zip(self.model.classes_, p))
         key = max(d, key=d.get)
@@ -20,11 +18,3 @@ class ChitChatClassifier:
                 'probability': d[key]
             }
         }
-
-if __name__ == '__main__':
-    if len(argv) > 1:
-        clf = ChitChatClassifier()
-        print(json.dumps(clf.predict(argv[1])))
-    else:
-        print('Error: argument missing.')
-        print('Usage: python chitchat_classifier.py <excerpt>')

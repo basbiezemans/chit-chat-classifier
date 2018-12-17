@@ -1,8 +1,7 @@
-from sklearn.externals import joblib
 from re import sub
 
 def preprocess(excerpt):
-    """ Returns a cleaned up excerpt without stopwords
+    """ Return a cleaned up excerpt without stopwords.
     """
     excerpt = sub('[^a-zA-Z]', ' ', excerpt)
     excerpt = excerpt.lower()
@@ -11,8 +10,7 @@ def preprocess(excerpt):
     return excerpt
 
 
-def document_term_matrix(excerpt):
-    """ Creates and returns a document-term matrix
+def document_term_matrix(vectorizer, excerpt):
+    """ Return a document-term matrix.
     """
-    vec = joblib.load('model/tfidf.vectorizer')
-    return vec.transform([preprocess(excerpt)]).toarray()
+    return vectorizer.transform([preprocess(excerpt)]).toarray()
