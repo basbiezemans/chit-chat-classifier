@@ -1,7 +1,7 @@
 from re import sub
 
 def preprocess(excerpt):
-    """ Return a cleaned up excerpt without stopwords.
+    """ Return a cleaned up excerpt.
     """
     excerpt = sub('[^a-zA-Z]', ' ', excerpt)
     excerpt = excerpt.lower()
