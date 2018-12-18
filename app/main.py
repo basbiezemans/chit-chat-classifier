@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from chitchat_lib import pickle_load
+from sklearn.externals import joblib
 from chitchat_classifier import ChitChatClassifier
 
 app = Flask(__name__)
@@ -21,8 +21,8 @@ def classify():
 
 if __name__ == '__main__':
     try:
-        mdl = pickle_load('model/chitchat.model')
-        vec = pickle_load('model/tfidf.vectorizer')
+        mdl = joblib.load('model/chitchat.model')
+        vec = joblib.load('model/tfidf.vectorizer')
         clf = ChitChatClassifier(mdl, vec)
         app.run(debug=True, host='127.0.0.1', port=8080)
     except Exception as e:
