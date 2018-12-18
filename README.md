@@ -1,6 +1,6 @@
 # Chit-chat Classifier
 
-Requirements: Python 3.6+, Scikit-learn
+Requirements: Python 3.6+, Scikit-learn, Scipy, Numpy
 
 Navigate to the `app` directory and install dependencies:
 
