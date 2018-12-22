@@ -3,6 +3,16 @@ from sklearn.externals import joblib
 from chitchat_classifier import ChitChatClassifier
 
 app = Flask(__name__)
+clf = None
+
+@app.before_first_request
+def load_model():
+    """ Recreate the model from file.
+    """
+    global clf
+    mdl = joblib.load('model/chitchat.model')
+    vec = joblib.load('model/tfidf.vectorizer')
+    clf = ChitChatClassifier(mdl, vec)
 
 @app.route('/')
 def test():
@@ -20,10 +30,4 @@ def classify():
     return jsonify(clf.predict(excerpt))
 
 if __name__ == '__main__':
-    try:
-        mdl = joblib.load('model/chitchat.model')
-        vec = joblib.load('model/tfidf.vectorizer')
-        clf = ChitChatClassifier(mdl, vec)
-        app.run(debug=True, host='127.0.0.1', port=8080)
-    except Exception as e:
-        print(str(e))
+    app.run(debug=True, host='127.0.0.1', port=8080)
