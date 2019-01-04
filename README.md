@@ -1,6 +1,6 @@
 # Chit-chat Classifier
 
-Requirements: Python 3.6+, Scikit-learn, Scipy, Numpy
+Requirements: Python 3.6+, Scikit-learn, Scipy, Numpy, Gunicorn for GCP deployment
 
 Navigate to the `app` directory and install dependencies:
 
@@ -26,7 +26,7 @@ POST-request example using [cURL](https://curl.haxx.se/):
 $ curl http://localhost:8080/classify -d "data=Let's have lunch and catch up next week"
 ```
 
-Output:
+JSON output:
 
 ```json
 {
@@ -38,4 +38,4 @@ Output:
 }
 ```
 
-In your terminal window, press **Ctrl+C** to exit the web server.
+
